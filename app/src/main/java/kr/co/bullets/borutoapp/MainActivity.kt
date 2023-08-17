@@ -5,9 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
 import kr.co.bullets.borutoapp.navigation.SetupNavGraph
 import kr.co.bullets.borutoapp.ui.theme.BorutoAppTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
 
