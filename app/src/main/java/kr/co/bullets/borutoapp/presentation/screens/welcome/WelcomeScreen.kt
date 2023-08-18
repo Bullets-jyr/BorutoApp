@@ -23,6 +23,7 @@ import com.google.accompanist.pager.*
 import kr.co.bullets.borutoapp.R
 import kr.co.bullets.borutoapp.domain.model.OnBoardingPage
 import kr.co.bullets.borutoapp.ui.theme.*
+import kr.co.bullets.borutoapp.util.Constants.LAST_ON_BOARDING_PAGE
 import kr.co.bullets.borutoapp.util.Constants.ON_BOARDING_PAGE_COUNT
 
 @ExperimentalPagerApi
@@ -124,7 +125,7 @@ fun FinishButton(
             modifier = Modifier
                 .fillMaxWidth(),
 //                .padding(horizontal = EXTRA_LARGE_PADDING),
-            visible = pagerState.currentPage == 2
+            visible = pagerState.currentPage == LAST_ON_BOARDING_PAGE
         ) {
             Button(
                 onClick = onClick,
