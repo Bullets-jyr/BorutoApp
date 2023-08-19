@@ -10,6 +10,7 @@ import kr.co.bullets.borutoapp.data.repository.DataStoreOperationsImpl
 import kr.co.bullets.borutoapp.data.repository.Repository
 import kr.co.bullets.borutoapp.domain.repository.DataStoreOperations
 import kr.co.bullets.borutoapp.domain.use_cases.UseCases
+import kr.co.bullets.borutoapp.domain.use_cases.get_all_heroes.GetAllHeroesUseCase
 import kr.co.bullets.borutoapp.domain.use_cases.read_onboarding.ReadOnBoardingUseCase
 import kr.co.bullets.borutoapp.domain.use_cases.save_onboarding.SaveOnBoardingUseCase
 import javax.inject.Singleton
@@ -31,7 +32,8 @@ object RepositoryModule {
     fun provideUseCases(repository: Repository): UseCases {
         return UseCases(
             saveOnBoardingUseCase = SaveOnBoardingUseCase(repository = repository),
-            readOnBoardingUseCase = ReadOnBoardingUseCase(repository = repository)
+            readOnBoardingUseCase = ReadOnBoardingUseCase(repository = repository),
+            getAllHeroesUseCase = GetAllHeroesUseCase(repository = repository)
         )
     }
 }
