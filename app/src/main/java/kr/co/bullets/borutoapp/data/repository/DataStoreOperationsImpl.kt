@@ -1,4 +1,4 @@
-package kr.co.bullets.borutoapp.data.pref
+package kr.co.bullets.borutoapp.data.repository
 
 import android.content.Context
 import androidx.datastore.core.DataStore
