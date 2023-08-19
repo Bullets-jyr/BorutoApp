@@ -2,8 +2,10 @@ package kr.co.bullets.borutoapp.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
 import kr.co.bullets.borutoapp.util.Constants.HERO_DATABASE_TABLE
 
+@Serializable
 @Entity(tableName = HERO_DATABASE_TABLE)
 data class Hero(
     @PrimaryKey(autoGenerate = false)
