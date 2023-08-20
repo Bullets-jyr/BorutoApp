@@ -1,10 +1,12 @@
 package kr.co.bullets.borutoapp.presentation.common
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.util.Log
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
@@ -24,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.items
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.ImagePainter.State.Empty.painter
 import coil.compose.rememberImagePainter
@@ -34,6 +37,7 @@ import kr.co.bullets.borutoapp.presentation.components.RatingWidget
 import kr.co.bullets.borutoapp.ui.theme.*
 import kr.co.bullets.borutoapp.util.Constants.BASE_URL
 
+@ExperimentalCoilApi
 @Composable
 fun ListContent(
     heroes: LazyPagingItems<Hero>,
@@ -42,21 +46,22 @@ fun ListContent(
 //    val result = handlePagingResult(heroes = heroes)
 
 //    if (result) {
-//        LazyColumn(
-//            contentPadding = PaddingValues(all = SMALL_PADDING),
-//            verticalArrangement = Arrangement.spacedBy(SMALL_PADDING)
-//        ) {
-//            items(
-//                items = heroes,
-//                key = { hero ->
-//                    hero.id
-//                }
-//            ) { hero ->
-//                hero?.let {
-//                    HeroItem(hero = it, navController = navController)
-//                }
-//            }
-//        }
+        Log.d("ListContent", heroes.loadState.toString())
+        LazyColumn(
+            contentPadding = PaddingValues(all = SMALL_PADDING),
+            verticalArrangement = Arrangement.spacedBy(SMALL_PADDING)
+        ) {
+            items(
+                items = heroes,
+                key = { hero ->
+                    hero.id
+                }
+            ) { hero ->
+                hero?.let {
+                    HeroItem(hero = it, navController = navController)
+                }
+            }
+        }
 //    }
 }
 
@@ -109,8 +114,8 @@ fun HeroItem(
             },
         contentAlignment = Alignment.BottomStart
     ) {
-        Surface(shape = Shapes.large) {
-//        Surface(shape = RoundedCornerShape(size = LARGE_PADDING)) {
+//        Surface(shape = Shapes.large) {
+        Surface(shape = RoundedCornerShape(size = LARGE_PADDING)) {
             Image(
                 modifier = Modifier.fillMaxSize(),
                 painter = painter,
