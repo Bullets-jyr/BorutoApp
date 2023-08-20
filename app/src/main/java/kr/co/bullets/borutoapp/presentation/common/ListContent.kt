@@ -89,10 +89,10 @@ fun handlePagingResult(
 //                EmptyScreen(error = error, heroes = heroes)
                 false
             }
-//            heroes.itemCount < 1 -> {
-//                EmptyScreen()
-//                false
-//            }
+            heroes.itemCount < 1 -> {
+                EmptyScreen()
+                false
+            }
             else -> true
         }
     }

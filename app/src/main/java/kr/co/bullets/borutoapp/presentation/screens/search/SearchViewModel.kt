@@ -14,7 +14,7 @@ import kr.co.bullets.borutoapp.domain.model.Hero
 import kr.co.bullets.borutoapp.domain.use_cases.UseCases
 import javax.inject.Inject
 
-//@HiltViewModel
+@HiltViewModel
 //class SearchViewModel : ViewModel() {
 class SearchViewModel @Inject constructor(
     private val useCases: UseCases

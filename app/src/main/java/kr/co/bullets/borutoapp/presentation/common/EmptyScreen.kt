@@ -36,31 +36,31 @@ import java.net.SocketTimeoutException
 
 @Composable
 fun EmptyScreen(
-    error: LoadState.Error,
-//    error: LoadState.Error? = null,
-//    heroes: LazyPagingItems<Hero>? = null
+//    error: LoadState.Error,
+    error: LoadState.Error? = null,
+    heroes: LazyPagingItems<Hero>? = null
 ) {
 //    var message by remember {
 //        mutableStateOf(parseErrorMessage(message = error.toString()))
 //    }
-    var message by remember {
-        mutableStateOf(parseErrorMessage(error = error))
-    }
 //    var message by remember {
-//        mutableStateOf("Find your Favorite Hero!")
+//        mutableStateOf(parseErrorMessage(error = error))
 //    }
-    var icon by remember {
-        mutableStateOf(R.drawable.ic_network_error)
+    var message by remember {
+        mutableStateOf("Find your Favorite Hero!")
     }
 //    var icon by remember {
-//        mutableStateOf(R.drawable.ic_search_document)
+//        mutableStateOf(R.drawable.ic_network_error)
 //    }
+    var icon by remember {
+        mutableStateOf(R.drawable.ic_search_document)
+    }
 
-//    if (error != null) {
-//        message = parseErrorMessage(error = error)
-//        icon = R.drawable.ic_network_error
-//    }
-//
+    if (error != null) {
+        message = parseErrorMessage(error = error)
+        icon = R.drawable.ic_network_error
+    }
+
     var startAnimation by remember { mutableStateOf(false) }
     val alphaAnim by animateFloatAsState(
         targetValue = if (startAnimation) ContentAlpha.disabled else 0f,
