@@ -9,6 +9,7 @@ import androidx.navigation.navArgument
 import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
 import kr.co.bullets.borutoapp.presentation.screens.home.HomeScreen
+import kr.co.bullets.borutoapp.presentation.screens.search.SearchScreen
 import kr.co.bullets.borutoapp.presentation.screens.splash.SplashScreen
 import kr.co.bullets.borutoapp.presentation.screens.welcome.WelcomeScreen
 import kr.co.bullets.borutoapp.util.Constants.DETAILS_ARGUMENT_KEY
@@ -40,7 +41,8 @@ fun SetupNavGraph(navController: NavHostController) {
 
         }
         composable(route = Screen.Search.route) {
-
+            SearchScreen()
+//            SearchScreen(navController = navController)
         }
     }
 }

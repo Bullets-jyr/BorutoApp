@@ -36,11 +36,15 @@ import java.net.SocketTimeoutException
 
 @Composable
 fun EmptyScreen(
-    error: LoadState.Error? = null,
+    error: LoadState.Error,
+//    error: LoadState.Error? = null,
 //    heroes: LazyPagingItems<Hero>? = null
 ) {
+//    var message by remember {
+//        mutableStateOf(parseErrorMessage(message = error.toString()))
+//    }
     var message by remember {
-        mutableStateOf(parseErrorMessage(message = error.toString()))
+        mutableStateOf(parseErrorMessage(error = error))
     }
 //    var message by remember {
 //        mutableStateOf("Find your Favorite Hero!")
@@ -181,27 +185,13 @@ fun EmptyContent(
 //    }
 }
 
-fun parseErrorMessage(message: String): String {
-    Log.d("parseErrorMessage", "$message")
-    return when {
-        message.contains("SocketTimeoutException") -> {
-            "Server Unavailable."
-        }
-        message.contains("ConnectException") -> {
-            "Internet Unavailable."
-        }
-        else -> {
-            "Unknown Error."
-        }
-    }
-}
-
-//fun parseErrorMessage(error: LoadState.Error): String {
-//    return when (error.error) {
-//        is SocketTimeoutException -> {
+//fun parseErrorMessage(message: String): String {
+//    Log.d("parseErrorMessage", "$message")
+//    return when {
+//        message.contains("SocketTimeoutException") -> {
 //            "Server Unavailable."
 //        }
-//        is ConnectException -> {
+//        message.contains("ConnectException") -> {
 //            "Internet Unavailable."
 //        }
 //        else -> {
@@ -209,6 +199,20 @@ fun parseErrorMessage(message: String): String {
 //        }
 //    }
 //}
+
+fun parseErrorMessage(error: LoadState.Error): String {
+    return when (error.error) {
+        is SocketTimeoutException -> {
+            "Server Unavailable."
+        }
+        is ConnectException -> {
+            "Internet Unavailable."
+        }
+        else -> {
+            "Unknown Error."
+        }
+    }
+}
 
 @Composable
 @Preview(showBackground = true)
