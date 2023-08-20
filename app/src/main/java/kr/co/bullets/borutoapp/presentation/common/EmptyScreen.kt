@@ -97,19 +97,19 @@ fun EmptyScreen(
 //        )
 //    }
 
-    EmptyContent(
-        alphaAnim = alphaAnim,
-        icon = icon,
-        message = message
-    )
-
 //    EmptyContent(
 //        alphaAnim = alphaAnim,
 //        icon = icon,
-//        message = message,
-//        heroes = heroes,
-//        error = error
+//        message = message
 //    )
+
+    EmptyContent(
+        alphaAnim = alphaAnim,
+        icon = icon,
+        message = message,
+        heroes = heroes,
+        error = error
+    )
 }
 
 @Composable
@@ -117,72 +117,72 @@ fun EmptyContent(
     alphaAnim: Float,
     icon: Int,
     message: String,
-//    error: LoadState.Error? = null,
-//    heroes: LazyPagingItems<Hero>? = null
+    error: LoadState.Error? = null,
+    heroes: LazyPagingItems<Hero>? = null
 ) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Icon(
-            modifier = Modifier
-                .size(NETWORK_ERROR_ICON_HEIGHT)
-                .alpha(alpha = alphaAnim),
-            painter = painterResource(id = icon),
-            contentDescription = stringResource(R.string.network_error_icon),
-            tint = if (isSystemInDarkTheme()) LightGray else DarkGray
-        )
-        Text(
-            modifier = Modifier
-                .padding(top = SMALL_PADDING)
-                .alpha(alpha = alphaAnim),
-            text = message,
-            color = if (isSystemInDarkTheme()) LightGray else DarkGray,
-            textAlign = TextAlign.Center,
-            fontWeight = FontWeight.Medium,
-            fontSize = MaterialTheme.typography.subtitle1.fontSize
-        )
-    }
-
-//    var isRefreshing by remember { mutableStateOf(false) }
-//
-//    SwipeRefresh(
-//        swipeEnabled = error != null,
-//        state = rememberSwipeRefreshState(isRefreshing),
-//        onRefresh = {
-//            isRefreshing = true
-//            heroes?.refresh()
-//            isRefreshing = false
-//        }
+//    Column(
+//        modifier = Modifier.fillMaxSize(),
+//        horizontalAlignment = Alignment.CenterHorizontally,
+//        verticalArrangement = Arrangement.Center
 //    ) {
-//        Column(
+//        Icon(
 //            modifier = Modifier
-//                .fillMaxSize()
-//                .verticalScroll(rememberScrollState()),
-//            horizontalAlignment = Alignment.CenterHorizontally,
-//            verticalArrangement = Arrangement.Center
-//        ) {
-//            Icon(
-//                modifier = Modifier
-//                    .size(NETWORK_ERROR_ICON_HEIGHT)
-//                    .alpha(alpha = alphaAnim),
-//                painter = painterResource(id = icon),
-//                contentDescription = stringResource(R.string.network_error_icon),
-//                tint = if (isSystemInDarkTheme()) LightGray else DarkGray
-//            )
-//            Text(
-//                modifier = Modifier
-//                    .padding(top = SMALL_PADDING)
-//                    .alpha(alpha = alphaAnim),
-//                text = message,
-//                color = if (isSystemInDarkTheme()) LightGray else DarkGray,
-//                textAlign = TextAlign.Center,
-//                fontWeight = FontWeight.Medium,
-//                fontSize = MaterialTheme.typography.subtitle1.fontSize
-//            )
-//        }
+//                .size(NETWORK_ERROR_ICON_HEIGHT)
+//                .alpha(alpha = alphaAnim),
+//            painter = painterResource(id = icon),
+//            contentDescription = stringResource(R.string.network_error_icon),
+//            tint = if (isSystemInDarkTheme()) LightGray else DarkGray
+//        )
+//        Text(
+//            modifier = Modifier
+//                .padding(top = SMALL_PADDING)
+//                .alpha(alpha = alphaAnim),
+//            text = message,
+//            color = if (isSystemInDarkTheme()) LightGray else DarkGray,
+//            textAlign = TextAlign.Center,
+//            fontWeight = FontWeight.Medium,
+//            fontSize = MaterialTheme.typography.subtitle1.fontSize
+//        )
 //    }
+
+    var isRefreshing by remember { mutableStateOf(false) }
+
+    SwipeRefresh(
+        swipeEnabled = error != null,
+        state = rememberSwipeRefreshState(isRefreshing = isRefreshing),
+        onRefresh = {
+            isRefreshing = true
+            heroes?.refresh()
+            isRefreshing = false
+        }
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Icon(
+                modifier = Modifier
+                    .size(NETWORK_ERROR_ICON_HEIGHT)
+                    .alpha(alpha = alphaAnim),
+                painter = painterResource(id = icon),
+                contentDescription = stringResource(R.string.network_error_icon),
+                tint = if (isSystemInDarkTheme()) LightGray else DarkGray
+            )
+            Text(
+                modifier = Modifier
+                    .padding(top = SMALL_PADDING)
+                    .alpha(alpha = alphaAnim),
+                text = message,
+                color = if (isSystemInDarkTheme()) LightGray else DarkGray,
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Medium,
+                fontSize = MaterialTheme.typography.subtitle1.fontSize
+            )
+        }
+    }
 }
 
 //fun parseErrorMessage(message: String): String {
