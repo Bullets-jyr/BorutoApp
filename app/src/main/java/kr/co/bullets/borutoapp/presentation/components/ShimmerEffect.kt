@@ -17,14 +17,14 @@ import kr.co.bullets.borutoapp.ui.theme.*
 
 @Composable
 fun ShimmerEffect() {
-//    LazyColumn(
-//        contentPadding = PaddingValues(all = SMALL_PADDING),
-//        verticalArrangement = Arrangement.spacedBy(SMALL_PADDING)
-//    ){
-//        items(count = 2){
-//            AnimatedShimmerItem()
-//        }
-//    }
+    LazyColumn(
+        contentPadding = PaddingValues(all = SMALL_PADDING),
+        verticalArrangement = Arrangement.spacedBy(SMALL_PADDING)
+    ) {
+        items(count = 2){
+            AnimatedShimmerItem()
+        }
+    }
 }
 
 @Composable
