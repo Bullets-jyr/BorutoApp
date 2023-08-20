@@ -8,6 +8,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
+import kr.co.bullets.borutoapp.navigation.Screen
 import kr.co.bullets.borutoapp.presentation.common.ListContent
 import kr.co.bullets.borutoapp.presentation.components.RatingWidget
 import kr.co.bullets.borutoapp.ui.theme.LARGE_PADDING
@@ -33,7 +34,9 @@ fun HomeScreen(
 //    }
     Scaffold(
         topBar = {
-            HomeTopBar(onSearchClicked = {})
+            HomeTopBar(onSearchClicked = {
+                navController.navigate(Screen.Search.route)
+            })
         },
         content = {
             ListContent(
