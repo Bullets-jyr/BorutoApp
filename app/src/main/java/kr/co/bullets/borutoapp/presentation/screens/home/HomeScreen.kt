@@ -1,9 +1,13 @@
 package kr.co.bullets.borutoapp.presentation.screens.home
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
+import kr.co.bullets.borutoapp.presentation.components.RatingWidget
+import kr.co.bullets.borutoapp.ui.theme.LARGE_PADDING
 
 @Composable
 fun HomeScreen(
@@ -14,8 +18,12 @@ fun HomeScreen(
     Scaffold(
         topBar = {
             HomeTopBar(onSearchClicked = {})
-        }
-    ) {
+        },
 
+    ) {
+        RatingWidget(
+            modifier = Modifier.padding(all = LARGE_PADDING),
+            rating = 5.0
+        )
     }
 }
