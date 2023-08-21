@@ -50,19 +50,19 @@ fun DetailsContent(
     val currentSheetFraction = scaffoldState.currentSheetFraction
     Log.d("Fraction NEW", currentSheetFraction.toString())
 
-//    val radiusAnim by animateDpAsState(
-//        targetValue =
-//        if (currentSheetFraction == 1f)
-//            EXTRA_LARGE_PADDING
-//        else
-//            EXPANDED_RADIUS_LEVEL
-//    )
+    val radiusAnim by animateDpAsState(
+        targetValue =
+        if (currentSheetFraction == 1f)
+            EXTRA_LARGE_PADDING
+        else
+            EXPANDED_RADIUS_LEVEL
+    )
 
     BottomSheetScaffold(
-//        sheetShape = RoundedCornerShape(
-//            topStart = radiusAnim,
-//            topEnd = radiusAnim
-//        ),
+        sheetShape = RoundedCornerShape(
+            topStart = radiusAnim,
+            topEnd = radiusAnim
+        ),
         scaffoldState = scaffoldState,
         sheetPeekHeight = MIN_SHEET_HEIGHT,
         sheetContent = {
