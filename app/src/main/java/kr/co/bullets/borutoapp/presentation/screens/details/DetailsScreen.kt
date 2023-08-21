@@ -17,8 +17,8 @@ fun DetailsScreen(
 ) {
     val selectedHero by detailsViewModel.selectedHero.collectAsState()
 
-//    DetailsContent(
-//        navController = navController,
-//        selectedHero = selectedHero
-//    )
+    DetailsContent(
+        navController = navController,
+        selectedHero = selectedHero
+    )
 }
